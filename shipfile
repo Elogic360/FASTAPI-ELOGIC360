@@ -1,0 +1,14 @@
+project: fastAPI
+services:
+  web:
+    image: python:3.13
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    env:
+      - PYTHONUNBUFFERED=1
+    workdir: /app
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    dependencies:
+      - pip install -r requirements.txt
